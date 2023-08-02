@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "wrangler dev src/index.ts",
-    "publish": "wrangler deploy --minify src/index.ts"
+    "deploy": "wrangler deploy --minify src/index.ts"
   },
   "dependencies": {
     "hono": "^3.3.4"
