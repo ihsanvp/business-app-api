@@ -1,6 +1,7 @@
 {
   "name": "business-app-api",
   "version": "0.0.0",
+  "main": "src/index.ts",
   "scripts": {
     "dev": "wrangler dev src/index.ts",
     "deploy": "wrangler deploy --minify src/index.ts"
