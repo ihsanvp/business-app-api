@@ -1,9 +1,11 @@
 import { Hono } from 'hono'
-import activation from './activation'
+import ActivationRouter from './app/activation/router'
+import CustomersRouter from "./app/customer/router"
 
 const app = new Hono()
 
-app.route("/activation", activation)
+app.route("/activation", ActivationRouter)
+app.route("/customers", CustomersRouter)
 
 app.get('/', async (c) => {
     return c.json({
