@@ -4,7 +4,8 @@
   "main": "src/index.ts",
   "scripts": {
     "dev": "wrangler dev src/index.ts",
-    "deploy": "wrangler deploy --minify src/index.ts "
+    "deploy": "wrangler deploy --minify src/index.ts",
+    "generate:prisma": "prisma generate --data-proxy"
   },
   "dependencies": {
     "@prisma/client": "^5.1.1",
