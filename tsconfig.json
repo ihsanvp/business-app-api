@@ -6,12 +6,14 @@
     "esModuleInterop": true,
     "strict": true,
     "lib": [
-      "esnext"
+      "esnext",
+      "DOM",
     ],
     "types": [
-      "@cloudflare/workers-types"
+      "@cloudflare/workers-types",
+      "node"
     ],
     "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx"
+    "jsxImportSource": "hono/jsx",
   },
 }
