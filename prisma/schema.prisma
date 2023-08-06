@@ -20,10 +20,23 @@ model Customer {
 }
 
 model ActivationKey {
-  id         Int      @id @default(autoincrement())
-  value      String   @unique
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  customer   Customer @relation(fields: [customerId], references: [id])
+  id         Int        @id @default(autoincrement())
+  value      String     @unique
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  customer   Customer   @relation(fields: [customerId], references: [id])
   customerId String
+  usage      KeyUsage[]
+}
+
+model KeyUsage {
+  id        Int           @id @default(autoincrement())
+  device    String
+  active    Boolean       @default(true)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  key       ActivationKey @relation(fields: [keyId], references: [id])
+  keyId     Int
+
+  @@unique([device, keyId], name: "device_identifier")
 }

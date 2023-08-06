@@ -3,15 +3,6 @@ import { createHandler } from "../../utils/app";
 
 const KeyStatusHandler = createHandler(async (c) => {
     const reqKey = c.req.param("key")
-    const error = () => c.json({ error: "key not found" }, 404)
-
-    if (reqKey.length != 19) {
-        throw error()
-    }
-
-    if (reqKey.split("-").length != 4) {
-        throw error()
-    }
 
     const prisma = getPrisma(c.env.DATABASE_URL)
     const storedKey = await prisma.activationKey.findFirst({
@@ -21,7 +12,7 @@ const KeyStatusHandler = createHandler(async (c) => {
     })
 
     if (!storedKey) {
-        throw error()
+        return c.json({ error: "key not found" }, 404)
     }
 
     return c.json({

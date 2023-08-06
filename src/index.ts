@@ -1,8 +1,11 @@
 import { Hono } from 'hono'
+import { cors } from "hono/cors"
 import ActivationRouter from './app/activation/router'
 import CustomersRouter from "./app/customer/router"
 
 const app = new Hono()
+
+app.use("*", cors())
 
 app.route("/activation", ActivationRouter)
 app.route("/customers", CustomersRouter)
