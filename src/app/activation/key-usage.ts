@@ -35,7 +35,7 @@ const KeyUsageHandler = createHandler(async (c) => {
     if (active) {
         return c.json({
             error: "Key already in use"
-        }, 400)
+        }, 409)
     }
 
     await prisma.keyUsage.create({
